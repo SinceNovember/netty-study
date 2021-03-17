@@ -4,9 +4,6 @@ import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-import io.netty.channel.socket.nio.NioSocketChannel;
-
-import java.nio.channels.SocketChannel;
 
 /**
  * 丢弃任何进入的数据
@@ -29,7 +26,7 @@ public class DiscardServer {
                         @Override
                         protected void initChannel(Channel ch) throws Exception {
                             // 添加ChannelHandler到ChannelPipeline
-                            ch.pipeline().addLast(new DiscardServerHandler());
+                            ch.pipeline().addLast(new com.liu.discard.DiscardServerHandler());
                         }
                     })
                     .option(ChannelOption.SO_BACKLOG, 128)
